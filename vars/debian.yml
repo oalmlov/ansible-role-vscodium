@@ -1,0 +1,4 @@
+---
+__distro_dependencies:
+  - python3-apt
+vscodium_repo_string: deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main

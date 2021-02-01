@@ -1,0 +1,11 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Assert codium package is installed
+    package:
+      name: codium
+      state: present

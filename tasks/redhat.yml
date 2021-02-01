@@ -1,0 +1,21 @@
+---
+- name: install role dependencies
+  ansible.builtin.yum:
+    name: "{{ __role_dependencies }}"
+    state: present
+
+- name: add rpm key
+  ansible.builtin.rpm_key:
+    key: "{{ vscodium_repo_key }}"
+    state: present
+
+- name: add yum repo
+  ansible.builtin.yum_repository:
+    name: '{{ vscodium_repo_name }}'
+    description: '{{ vscodium_repo_name }}'
+    baseurl: "{{ vscodium_repo_url }}"
+
+- name: install package
+  ansible.builtin.yum:
+    name: '{{ vscodium_package_name }}'
+    state: present

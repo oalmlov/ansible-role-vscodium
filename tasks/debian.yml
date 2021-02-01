@@ -1,0 +1,20 @@
+---
+- name: install role dependencies
+  ansible.builtin.apt:
+    name: "{{ __role_dependencies }}"
+    update_cache: true
+
+- name: add apt key
+  ansible.builtin.apt_key:
+    url: "{{ vscodium_repo_key }}"
+    state: present
+
+- name: add apt repo
+  ansible.builtin.apt_repository:
+    repo: "{{ vscodium_repo_string }}"
+
+- name: install package
+  ansible.builtin.apt:
+    name: "{{ vscodium_package_name }}"
+    state: present
+    update_cache: true

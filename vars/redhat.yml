@@ -1,0 +1,4 @@
+---
+__distro_dependencies: []
+vscodium_repo_url: https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/rpms/
+vscodium_repo_name: gitlab.com_paulcarroty_vscodium_repo

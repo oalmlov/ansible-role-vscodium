@@ -1,0 +1,26 @@
+---
+# tasks file for vscodium
+- name: include disto specific vars
+  include_vars: '{{ lookup("first_found", file) }}'
+  vars:
+    file:
+      - 'vars/{{ ansible_os_family | lower }}.yml'
+      - 'vars/{{ ansible_distribution | lower }}.yml'
+
+- name: generate dependencies
+  set_fact:
+    __role_dependencies: '{{ __dependencies + __distro_dependencies }}'
+
+- name: include disto specific tasks
+  include_tasks: '{{ lookup("first_found", file) }}'
+  vars:
+    file:
+      - 'tasks/{{ ansible_os_family | lower }}.yml'
+      - 'tasks/{{ ansible_distribution | lower }}.yml'
+
+- name: install extensions
+  command: codium --install-extension {{ item }}
+  register: result
+  failed_when: '"Failed installing" in result.stdout'
+  changed_when: '"successfully installed" in result.stdout'
+  loop: "{{ vscodium_extensions }}"

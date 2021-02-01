@@ -1,0 +1,13 @@
+---
+# defaults file for vscodium
+
+# @var vscodium_package_name:description: The vscodium package name.
+vscodium_package_name: codium
+# @var vscodium_repo_key:description: The vscodium repo key.
+vscodium_repo_key: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+# @var vscodium_extensions:description: A list of vscodium extensions to install.
+# @var vscodium_extensions:example: >
+# vscodium_extensions:
+# - ms-python.python
+# @end
+vscodium_extensions: []
